@@ -1,0 +1,28 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "deepX's back end code challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel-node index.js",
+    "babel-debug": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/besilva/code-challenge.git"
+  },
+  "keywords": [
+    "deepX"
+  ],
+  "author": "besilva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/besilva/code-challenge/issues"
+  },
+  "homepage": "https://github.com/besilva/code-challenge#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
