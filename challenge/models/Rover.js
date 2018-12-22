@@ -27,17 +27,24 @@ export class Rover{
         if(!(cardinalPoint%2)){
             this.moveVertically(cardinalPoint);
             if (this.y > this.plateau.maximumY || this.y < 0){
-                this.y = Math.abs(this.y) -1;
-                console.log("You reached the end of the plateau");
+                this.changeSideOfPlateauVertical();
             }
         }else{
             this.moveHorizontally(cardinalPoint);
             if (this.x > this.plateau.maximumX || this.x < 0){
-                this.x = Math.abs(this.x) -1;
-                console.log("You reached the end of the plateau");
+                this.changeSideOfPlateauHorizontal();
             }
         }
     }
+
+    changeSideOfPlateauHorizontal(){
+        this.x = Math.abs(Math.abs(this.x) -6);
+    }
+
+    changeSideOfPlateauVertical(){
+        this.y = Math.abs(Math.abs(this.y) -6);
+    }
+    
     moveVertically(cardinalPoint){
         this.y = (this.y + ((-cardinalPoint)+1));
     }
