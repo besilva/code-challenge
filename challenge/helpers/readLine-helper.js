@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 export const inputText = (question) => {
     return new Promise((resolve, reject) => {
         rl.question(question, (answer) => {
-            resolve(answer)
+            resolve(answer);
         });
     });
 }

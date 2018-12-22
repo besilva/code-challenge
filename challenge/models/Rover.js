@@ -1,44 +1,59 @@
-const cardinalPoints = {N: 0, E:90, S:180, W:270}
+const cardinalPoints = {N: 0, E:90, S:180, W:270};
 const degressToCardinal =['N', 'E', 'S', 'W'];
 export class Rover{
     constructor(plateau, x, y, cardinalPoint){
         this.x = parseInt(x);
         this.y = parseInt(y);
-        this.cardinalPoint = cardinalPoints[cardinalPoint],
-        this.plateau = plateau
+        this.cardinalPoint = cardinalPoints[cardinalPoint];
+        this.plateau = plateau;
        
     }
     executeCommands(commands){
         for(let i = 0; i< commands.length; i++){
             this.execute(commands[i]);
         }
-        console.log(this.currentPosition())
+        console.log(this.currentPosition());
     }
     execute(command){
         if(command == 'M')
-            this.moveForward();
+            this.move();
         else if(command == 'L')
-            this.turnLeft()
+            this.turnLeft();
         else 
             this.turnRight();
     }
-    moveForward(){
+    move(){
         let cardinalPoint = parseInt(this.cardinalPoint/90);
         if(!(cardinalPoint%2)){
-            this.y = (this.y + ((-cardinalPoint)+1) + this.plateau.maximumY) % this.plateau.maximumY;
+            this.moveVertically(cardinalPoint);
+            if (this.y > this.plateau.maximumY || this.y < 0){
+                this.y = Math.abs(this.y) -1;
+                console.log("You reached the end of the plateau");
+            }
         }else{
-            this.x = ((this.x + (-cardinalPoint)+2) + this.plateau.maximumX) % this.plateau.maximumX;;
+            this.moveHorizontally(cardinalPoint);
+            if (this.x > this.plateau.maximumX || this.x < 0){
+                this.x = Math.abs(this.x) -1;
+                console.log("You reached the end of the plateau");
+            }
         }
+    }
+    moveVertically(cardinalPoint){
+        this.y = (this.y + ((-cardinalPoint)+1));
+    }
+
+    moveHorizontally(cardinalPoint){
+        this.x = ((this.x + (-cardinalPoint)+2))
     }
 
     turnLeft(){
-        this.cardinalPoint = (this.cardinalPoint - 90 +360) % 360
+        this.cardinalPoint = (this.cardinalPoint - 90 +360) % 360;
     }
     turnRight(){
-        this.cardinalPoint = (this.cardinalPoint + 90) % 360
+        this.cardinalPoint = (this.cardinalPoint + 90) % 360;
     }
 
     currentPosition(){
-        return `${this.x} ${this.y} ${degressToCardinal[(this.cardinalPoint/90)]}`
+        return `${this.x} ${this.y} ${degressToCardinal[(this.cardinalPoint/90)]}`;
     }
 }
