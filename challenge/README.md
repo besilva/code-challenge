@@ -1,7 +1,6 @@
 ## Run the project
 
 ```
-cd /challenge
 npm i
 npm run solution
 
