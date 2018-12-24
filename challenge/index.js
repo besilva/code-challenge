@@ -10,13 +10,13 @@ const init =  async() => {
         while(positon != 'quit'){        
             console.log("If you want to exit type quit");
             positon = await inputText("Where should the rover be deployed? ");
-            if( positon == 'quit' )
-                process.exit(-1);
-            let rover = new Rover(plateau, ...positon.split(' '));
-            commands = await inputText("What should the rover do? ");
-            rover.executeCommands(commands);
-        }
-        console.log(positon);
+            if( positon != 'quit' ){
+                let rover = new Rover(plateau, ...positon.split(' '));
+                commands = await inputText("What should the rover do? ");
+                rover.executeCommands(commands);
+            }
+        }    
+        process.exit();       
     }catch(e){
         console.log(e);
       
