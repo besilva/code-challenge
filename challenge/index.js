@@ -16,10 +16,10 @@ const init =  async() => {
                 rover.executeCommands(commands);
             }
         }    
-        process.exit();       
     }catch(e){
         console.log(e);
       
     }
+    process.exit();       
 }
 init();
